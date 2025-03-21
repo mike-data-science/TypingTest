@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+    var textSamples = (List<string>)ViewData["TextSamples"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speed Typing Test</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="typing-area">
+            <div class="typing-container">
+                <textarea id="hidden-input" autocapitalize="off" autocorrect="off" spellcheck="false"
+                          style="opacity: 0; position: absolute;"></textarea>
+                <div class="typing-text-display" id="textDisplay">
+                    @foreach (var text in textSamples)
+                    {
+                        <div class="line">@Html.Raw(text)</div>
+                    }
+                </div>
+            </div>
+            <div class="stats">
+                <span id="countdown">Time Left: 60s</span>
+                <span id="wpm">WPM: 0</span>
+                <span id="accuracy">Accuracy: 100%</span>
+            </div>
+        </div>
+
+        <div class="results-container" id="results-container">
+            <h2>Results</h2>
+            <p id="result-wpm">WPM: 0</p>
+            <p id="result-accuracy">Accuracy: 100%</p>
+            <p id="correct-words">Correct Words: 0</p>
+            <button id="restart-btn">Restart</button>
+        </div>
+
+    </div>
+
+    <script src="~/js/site.js"></script>
+</body>
+</html>
